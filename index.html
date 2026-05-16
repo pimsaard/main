@@ -3,360 +3,507 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pariwat Imsa-ard - Academic Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Pariwat Imsa-ard | Academic Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-orange: #f39c12;
-            --primary-orange-hover: #e67e22;
-            --bg-light: #f8f9fa;
-            --text-dark: #1a1a1a;
-            --text-gray: #555555;
-            --border-color: #eaeaea;
+            --accent-color: #E05A00; /* Modern burnt orange */
+            --accent-hover: #C24D00;
+            --bg-color: #FAFAFA; /* Ultra-light modern gray */
+            --card-bg: #FFFFFF;
+            --text-main: #111827; /* Near black */
+            --text-muted: #4B5563; /* Slate gray */
+            --border-light: #E5E7EB;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* Container */
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 5%;
         }
 
-        /* Header */
-        header {
+        /* Sticky Glassmorphism Navbar */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(250, 250, 250, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+            padding: 1.25rem 0;
+        }
+
+        .nav-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 40px;
         }
 
-        .header-left .name {
-            font-weight: 700;
+        .nav-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-brand .name {
+            font-weight: 800;
             font-size: 1.1rem;
+            letter-spacing: -0.02em;
         }
 
-        .header-left .desc {
-            font-size: 0.85rem;
-            color: var(--text-gray);
+        .nav-brand .subtitle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-gray);
-            margin-left: 25px;
+            color: var(--text-muted);
+            font-weight: 600;
             font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s;
+            transition: var(--transition-smooth);
         }
 
         .nav-links a:hover {
-            color: var(--primary-orange);
+            color: var(--accent-color);
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 9999px;
+            padding: 0.25rem;
+            gap: 0.25rem;
+        }
+
+        .lang-toggle span {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .lang-toggle .active {
+            background: rgba(224, 90, 0, 0.1);
+            color: var(--accent-color);
         }
 
         /* Hero Section */
         .hero {
             display: flex;
-            justify-content: space-between;
-            gap: 50px;
-            margin-bottom: 60px;
+            align-items: center;
+            gap: 4rem;
+            padding: 5rem 0;
         }
 
         .hero-content {
             flex: 1;
         }
 
-        .tags {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #d35400;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            display: block;
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(224, 90, 0, 0.08);
+            color: var(--accent-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 800;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(3rem, 5vw, 4.5rem);
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 15px;
-            color: #111;
-            letter-spacing: -1px;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+            color: #000;
         }
 
-        .hero .position {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--text-gray);
-            margin-bottom: 20px;
-        }
-
-        .hero .bio-short {
+        .hero .role {
+            font-size: 1.15rem;
             font-weight: 600;
-            margin-bottom: 20px;
-            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
         }
 
-        .hero .bio-long {
-            color: var(--text-gray);
-            margin-bottom: 30px;
+        .hero p.bio {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 90%;
+        }
+
+        .hero p.bio strong {
+            color: var(--text-main);
         }
 
         .contact-info {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
             font-size: 0.95rem;
-            margin-bottom: 30px;
+            font-weight: 500;
         }
 
+        .contact-info span { color: var(--text-muted); }
         .contact-info a {
-            color: #d35400;
+            color: var(--accent-color);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
+            transition: var(--transition-smooth);
         }
+        .contact-info a:hover { opacity: 0.8; }
 
-        /* Buttons */
+        /* Modern Buttons */
         .btn-group {
             display: flex;
-            gap: 15px;
+            gap: 1rem;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 10px 24px;
-            border-radius: 30px;
+            padding: 0.8rem 1.8rem;
+            border-radius: 9999px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: all 0.3s;
-            border: 1px solid var(--border-color);
-            background: white;
-            color: var(--text-dark);
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn-primary {
-            background-color: var(--primary-orange);
-            color: white;
-            border: none;
+            background-color: var(--accent-color);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(224, 90, 0, 0.25);
         }
 
         .btn-primary:hover {
-            background-color: var(--primary-orange-hover);
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(224, 90, 0, 0.3);
         }
 
-        .btn:hover:not(.btn-primary) {
-            border-color: #ccc;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        .btn-outline {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
         }
 
-        /* Profile Image */
-        .hero-image {
-            width: 300px;
-            height: 380px;
+        .btn-outline:hover {
+            border-color: var(--text-muted);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Hero Image */
+        .hero-image-wrapper {
             flex-shrink: 0;
+            width: 320px;
+            height: 420px;
+            position: relative;
         }
 
-        .hero-image img {
+        .hero-image-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+            pointer-events: none;
+        }
+
+        .hero-image-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .hero-image-wrapper:hover img {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
         }
 
         /* Work Areas */
+        .work-section {
+            padding: 4rem 0 6rem;
+        }
+
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            margin-bottom: 25px;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 1.5rem;
         }
 
         .section-header h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.03em;
         }
 
         .section-header p {
-            color: var(--text-gray);
+            color: var(--text-muted);
+            font-weight: 500;
             font-size: 0.95rem;
+            max-width: 400px;
+            text-align: right;
         }
 
-        .grid-cards {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
         }
 
+        /* State-of-the-art Cards */
         .card {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-color: rgba(224, 90, 0, 0.3);
+            box-shadow: 0 12px 24px -8px rgba(0,0,0,0.08);
         }
 
-        .card-tag {
-            font-size: 0.7rem;
+        .card-category {
+            font-size: 0.75rem;
             font-weight: 700;
-            color: var(--text-gray);
-            letter-spacing: 1px;
+            color: var(--text-muted);
             text-transform: uppercase;
-            margin-bottom: 15px;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
         }
 
         .card h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            color: var(--text-main);
         }
 
         .card p {
-            color: var(--text-gray);
+            color: var(--text-muted);
             font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Subtle arrow icon on hover for modern feel */
+        .card::after {
+            content: '→';
+            position: absolute;
+            bottom: 2.5rem;
+            right: 2rem;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: var(--transition-smooth);
+        }
+
+        .card:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .card:hover p {
+            padding-bottom: 1.5rem; /* Make room for arrow */
         }
 
         /* Footer */
         footer {
-            border-top: 1px solid var(--border-color);
-            padding: 30px 0;
+            border-top: 1px solid var(--border-light);
+            padding: 2.5rem 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .footer-inner {
             display: flex;
             justify-content: space-between;
-            color: var(--text-gray);
-            font-size: 0.9rem;
+            align-items: center;
         }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .hero { flex-direction: column; }
-            .hero-image { width: 100%; height: auto; max-width: 400px; margin: 0 auto; }
-            .grid-cards { grid-template-columns: repeat(2, 1fr); }
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 3rem;
+                padding: 3rem 0;
+            }
+            .hero-tags { justify-content: center; }
+            .hero p.bio { max-width: 100%; margin: 0 auto 2rem; }
+            .contact-info { justify-content: center; }
+            .btn-group { justify-content: center; }
+            .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .section-header p { text-align: left; }
             .nav-links { display: none; }
-        }
-
-        @media (max-width: 600px) {
-            .grid-cards { grid-template-columns: 1fr; }
-            .section-header { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <div class="header-left">
-                <div class="name">Pariwat Imsa-ard</div>
-                <div class="desc">Academic work and public writing</div>
+    <nav>
+        <div class="container nav-inner">
+            <div class="nav-brand">
+                <span class="name">Pariwat Imsa-ard</span>
+                <span class="subtitle">Academic work & research</span>
             </div>
-            <nav class="nav-links">
-                <a href="#">About me</a>
+            <div class="nav-links">
+                <a href="#">About</a>
                 <a href="#">Profile</a>
                 <a href="#">Publications</a>
+                <a href="#">Classes</a>
                 <a href="#">Projects</a>
-                <a href="#">Editorial</a>
-            </nav>
-        </header>
+            </div>
+            <div class="lang-toggle">
+                <span>TH</span>
+                <span class="active">EN</span>
+            </div>
+        </div>
+    </nav>
 
-        <main>
-            <section class="hero">
-                <div class="hero-content">
-                    <span class="tags">ENGLISH LANGUAGE TEACHING / APPLIED LINGUISTICS / LANGUAGE ASSESSMENT</span>
-                    <h1>Pariwat Imsa-ard</h1>
-                    <p class="position">Associate Professor, Faculty of Liberal Arts, Thammasat University</p>
-                    <p class="bio-short">Lecturer, researcher, and enthusiast in language testing and assessment, English language teaching, and the psychology of language learning.</p>
-                    <p class="bio-long">
-                        My research focuses on English Language Teaching (ELT), specifically employing quantitative research methods, classroom-based research, and RGT. I am highly interested in the psychology of language learning (e.g., boredom, anxiety, curiosity) and the issue of the Cognitive Preservation Intelligence (CPI) framework for AI integration in language education.
-                    </p>
-                    <div class="contact-info">
-                        Contact: <a href="mailto:pariwat@tu.ac.th">pariwat@tu.ac.th</a>
-                    </div>
-                    
-                    <div class="btn-group">
-                        <a href="#" class="btn btn-primary">Publications</a>
-                        <a href="#" class="btn">Profile</a>
-                        <a href="#" class="btn">Academic Resume</a>
-                        <a href="#" class="btn">Projects</a>
-                    </div>
+    <main class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-tags">
+                    <span class="tag">Language Assessment</span>
+                    <span class="tag">Applied Linguistics</span>
+                    <span class="tag">ELT</span>
                 </div>
                 
-                <div class="hero-image">
-                    <img src="./taepro.jpg" alt="Assoc. Prof. Pariwat Imsa-ard">
-                </div>
-            </section>
+                <h1>Pariwat Imsa-ard</h1>
+                <div class="role">Associate Professor, Faculty of Liberal Arts, Thammasat University</div>
+                
+                <p class="bio">
+                    Lecturer, researcher, and academic specializing in <strong>English Language Teaching (ELT)</strong> and <strong>Language Assessment</strong>. My work explores the psychology of language learning—examining boredom, anxiety, and curiosity—and leverages quantitative methods like RGT and SEM. Currently advancing the <strong>Cognitive Preservation Intelligence (CPI)</strong> framework for AI integration in education.
+                </p>
 
-            <section class="work-areas">
-                <div class="section-header">
-                    <h2>Work Areas</h2>
-                    <p>Gateways to research, projects, editorial work, and teaching</p>
+                <div class="contact-info">
+                    <div><span>Contact:</span> <a href="mailto:pariwat@tu.ac.th">pariwat@tu.ac.th</a></div>
                 </div>
                 
-                <div class="grid-cards">
-                    <div class="card">
-                        <div class="card-tag">PUBLICATIONS</div>
-                        <h3>Publications</h3>
-                        <p>Research on Second Language Acquisition (SLA), the effects of Extramural English (EE), the psychology of language learning, and the Cognitive Preservation Intelligence (CPI) framework.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-tag">PROJECTS & ASSESSMENT</div>
-                        <h3>Assessment Projects</h3>
-                        <p>Management and development of the university's TU-LEVEL English Proficiency Test project.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-tag">EDITORIAL WORK</div>
-                        <h3>Editorial Work</h3>
-                        <p>National and international editorial roles, including the THAITESOL Journal, Journal of Studies in the English Language (jSEL), and rEFLections.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-tag">TEACHING & MENTORING</div>
-                        <h3>Teaching & Mentoring</h3>
-                        <p>Undergraduate and graduate teaching, as well as mentoring Ph.D. students in English language studies.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-tag">RESEARCH METHODS</div>
-                        <h3>Research Methods</h3>
-                        <p>Expertise in data analysis utilizing the Repertory Grid Technique (RGT), quantitative research, and Structural Equation Modeling (SEM).</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-tag">ACADEMIC PROFILE</div>
-                        <h3>Academic Profile</h3>
-                        <p>Educational background (Ph.D. in English Language Teaching / Applied Linguistics), areas of expertise, and academic collaboration networks.</p>
-                    </div>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-primary">View Publications</a>
+                    <a href="#" class="btn btn-outline">Academic Profile</a>
+                    <a href="#" class="btn btn-outline">Curriculum Vitae</a>
                 </div>
-            </section>
-        </main>
+            </div>
 
-        <footer>
-            <div>© Assoc. Prof. Pariwat Imsa-ard, Ph.D.</div>
+            <div class="hero-image-wrapper">
+                <img src="./taepro.jpg" alt="Assoc. Prof. Pariwat Imsa-ard">
+            </div>
+        </section>
+
+        <section class="work-section">
+            <div class="section-header">
+                <h2>Work Areas</h2>
+                <p>Gateways to research profiles, editorial contributions, assessment frameworks, and teaching history.</p>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="card-category">Publications</div>
+                    <h3>Research & Papers</h3>
+                    <p>Academic publications focusing on Second Language Acquisition (SLA), the impact of Extramural English (EE), and the CPI framework.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-category">Projects & Assessment</div>
+                    <h3>Assessment Projects</h3>
+                    <p>Development, management, and theoretical implementation of the TU-LEVEL English Proficiency Test project for the university.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-category">Editorial Work</div>
+                    <h3>Journal Editorial</h3>
+                    <p>Active roles in national and international peer-reviewed journals, including THAITESOL Journal, jSEL, and rEFLections.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-category">Teaching & Mentoring</div>
+                    <h3>Classes & Supervision</h3>
+                    <p>Undergraduate and graduate course history, alongside supervision and academic mentoring for Ph.D. students in ELS</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-category">Research Methods</div>
+                    <h3>Methodologies</h3>
+                    <p>Expertise in designing and analyzing research using Repertory Grid Technique (RGT), quantitative research, and Structural Equation Modeling (SEM).</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-category">Academic Profile</div>
+                    <h3>Collaborations</h3>
+                    <p>Ph.D. background in ELT/Applied Linguistics, professional networks, and ongoing academic research collaborations.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <div>&copy; 2026 Assoc. Prof. Pariwat Imsa-ard, Ph.D.</div>
             <div>Academic work and public writing.</div>
-        </footer>
-    </div>
+        </div>
+    </footer>
 
 </body>
 </html>
