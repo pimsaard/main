@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications | Pariwat Imsa-ard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0F172A;
+            --accent: #E05A00;
+            --bg-body: #F8FAFC;
+            --surface: #FFFFFF;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-hover: 0 12px 24px -8px rgba(224, 90, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 5rem;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+        .page-header { margin-bottom: 2rem; }
+        .category-label { font-size: 0.75rem; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; }
+        .page-header h1 { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-top: 0.25rem; letter-spacing: -0.02em; }
+        .page-header p { color: var(--text-muted); font-size: 1rem; max-width: 700px; margin-top: 0.5rem; }
+
+        .profile-row { display: flex; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; gap: 2rem; margin-bottom: 2rem; align-items: center; box-shadow: var(--shadow-sm); }
+        .profile-img { width: 100px; height: 100px; border-radius: var(--radius-md); object-fit: cover; }
+        .profile-info h2 { font-size: 1.25rem; font-weight: 800; }
+        .profile-info p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+        .action-btns { display: flex; gap: 0.75rem; }
+        .btn { padding: 0.5rem 1.25rem; border-radius: 99px; font-size: 0.85rem; font-weight: 700; text-decoration: none; transition: var(--transition); border: 1px solid var(--accent); }
+        .btn-fill { background: var(--accent); color: white; }
+        .btn-fill:hover { background: #c24d00; transform: translateY(-2px); }
+        .btn-outline { background: transparent; color: var(--accent); }
+        .btn-outline:hover { background: rgba(224,90,0,0.05); transform: translateY(-2px); }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+        .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center; box-shadow: var(--shadow-sm); }
+        .stat-num { font-size: 2.5rem; font-weight: 800; color: var(--primary); line-height: 1; }
+        .stat-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-top: 0.5rem; }
+
+        .section-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--primary); display: flex; align-items: center; gap: 0.5rem; }
+
+        .analytics-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 3rem; }
+        .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+        .topic-tag { background: rgba(224, 90, 0, 0.05); color: var(--accent); border: 1px solid rgba(224, 90, 0, 0.1); padding: 0.5rem 1rem; border-radius: 99px; font-size: 0.85rem; font-weight: 700; }
+
+        .filter-bar { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
+        .search-input { width: 100%; padding: 1rem 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border); font-family: inherit; font-size: 0.95rem; box-shadow: var(--shadow-sm); outline: none; transition: var(--transition); }
+        .search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(224,90,0,0.1); }
+
+        .pub-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 4rem; }
+        .pub-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem; transition: var(--transition); display: flex; flex-direction: column;}
+        .pub-card:hover { border-color: rgba(224,90,0,0.3); box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+        .pub-meta { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; align-items: center; }
+        .badge { font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase; }
+        .badge-year { background: var(--bg-body); color: var(--text-main); border: 1px solid var(--border); }
+        .badge-q1 { background: rgba(16, 185, 129, 0.1); color: #059669; }
+        .badge-q2 { background: rgba(59, 130, 246, 0.1); color: #2563EB; }
+        .badge-q3 { background: rgba(245, 158, 11, 0.1); color: #D97706; }
+        .badge-q4 { background: rgba(107, 114, 128, 0.1); color: #4B5563; }
+        .badge-tci { background: rgba(139, 92, 246, 0.1); color: #7C3AED; }
+        .badge-eric { background: rgba(236, 72, 153, 0.1); color: #DB2777; }
+        
+        .pub-title { font-size: 1.1rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; line-height: 1.4; }
+        .pub-journal { font-size: 0.9rem; color: var(--text-main); font-weight: 600; margin-bottom: 0.5rem; }
+        .pub-authors { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem; flex-grow: 1;}
+        .pub-doi { font-size: 0.85rem; font-weight: 700; color: var(--accent); text-decoration: none; word-break: break-all; margin-top: auto;}
+        .pub-doi:hover { text-decoration: underline; }
+        .scholar-link { color: #2563EB; }
+
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem; display: flex; flex-direction: column; transition: var(--transition); }
+        .project-card:hover { border-color: var(--accent); box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+        .proj-year { font-size: 0.8rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; }
+        .proj-title { font-size: 1.05rem; font-weight: 800; color: var(--primary); margin-bottom: 1rem; line-height: 1.4; flex-grow: 1; }
+        .proj-role { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .proj-status { font-size: 0.75rem; font-weight: 700; color: #059669; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .profile-row { flex-direction: column; text-align: center; }
+            .action-btns { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="page-header">
+            <span class="category-label">Publications</span>
+            <h1>Research Outputs</h1>
+            <p>A comprehensive overview of academic publications, research signals, and ongoing projects derived from Scopus and institutional data sources.</p>
+        </header>
+
+        <div class="profile-row">
+            <img src="./taepro.jpg" alt="Pariwat Imsa-ard" class="profile-img">
+            <div class="profile-info">
+                <h2>Assoc. Prof. Dr. Pariwat Imsa-ard</h2>
+                <p>Faculty of Liberal Arts, Thammasat University • pariwat@tu.ac.th</p>
+                <div class="action-btns">
+                <a href="./index.html" class="btn btn-fill">Home</a>
+                <a href="https://bit.ly/CVPariwat" class="btn btn-outline">Open Full CV</a>
+                <a href="https://scholar.google.com/citations?user=jkoqmnwAAAAJ&hl=en&oi=ao" class="btn btn-outline">Google Scholar</a>
+                <a href="https://orcid.org/0000-0002-2648-3392" class="btn btn-outline">ORCID</a>
+                 <a href="https://www.scopus.com/authid/detail.uri?authorId=57219091400" class="btn btn-outline">Scopus</a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-num">37</div><div class="stat-label">Journal Articles</div></div>
+            <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Books / Chapters</div></div>
+            <div class="stat-card"><div class="stat-num">Q1</div><div class="stat-label">Top Tier Journals</div></div>
+            <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">Active Projects</div></div>
+        </div>
+
+        <h3 class="section-title">Refereed Articles (37)</h3>
+        
+        <div class="filter-bar">
+            <input type="text" class="search-input" placeholder="Search by title, journal, year, or DOI...">
+        </div>
+
+        <div class="pub-list">
+          
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2026</span><span class="badge badge-q1">SCOPUS Q1</span></div>
+                <h4 class="pub-title">self-efficacy and feedback.</h4>
+                <div class="pub-journal">TESOL Journal, online first.</div>
+                <div class="pub-authors">Imsa-ard, P. & Barrot, J. S.</div>
+                <a href="https://doi.org/10.1002/tesj.70104" target="_blank" class="pub-doi">DOI: 10.1002/tesj.70104</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2025</span><span class="badge badge-q1">SCOPUS Q1</span></div>
+                <h4 class="pub-title">Extramural English (EE): Its effects on EFL undergraduates' L2 vocabulary knowledge and affective variables.</h4>
+                <div class="pub-journal">Social Sciences & Humanities Open, 12, 102286.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=Extramural+English+(EE):+Its+effects+on+EFL+undergraduates+L2+vocabulary+knowledge+and+affective+variables" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2025</span><span class="badge badge-q1">SCOPUS Q1</span></div>
+                <h4 class="pub-title">Reframing subjectivity and construct elicitation: Applying the repertory grid technique in applied linguistics research.</h4>
+                <div class="pub-journal">Research Methods in Applied Linguistics, 4(3), 100261.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://doi.org/10.1016/j.rmal.2025.100261" target="_blank" class="pub-doi">DOI: 10.1016/j.rmal.2025.100261</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2025</span><span class="badge badge-q1">SCOPUS Q1</span></div>
+                <h4 class="pub-title">Rethinking oral communication materials: Learner-informed coursebook design in EFL higher education contexts.</h4>
+                <div class="pub-journal">International Journal of TESOL Studies, 7(3), 167-179.</div>
+                <div class="pub-authors">Matyakhan, T., Chusanachoti, R., & Imsa-ard, P.</div>
+                <a href="https://doi.org/10.58304/ijts.250825" target="_blank" class="pub-doi">DOI: 10.58304/ijts.250825</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2025</span><span class="badge badge-q3">SCOPUS Q3</span></div>
+                <h4 class="pub-title">Learning-oriented assessment and L2 argumentative writing: effects on writing ability and academic resilience.</h4>
+                <div class="pub-journal">Discover Education, 4, 396.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://doi.org/10.1007/s44217-025-00779-x" target="_blank" class="pub-doi">DOI: 10.1007/s44217-025-00779-x</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2025</span><span class="badge badge-q2">SCOPUS Q2</span></div>
+                <h4 class="pub-title">The L2 psychology constructs and L2 willingness to communicate of L2 learners in a context of low exposure to English.</h4>
+                <div class="pub-journal">rEFLections, 32(1), 269-294.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://doi.org/10.61508/refl.v32i1.275575" target="_blank" class="pub-doi">DOI: 10.61508/refl.v32i1.275575</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2024</span><span class="badge badge-q1">SCOPUS Q1</span></div>
+                <h4 class="pub-title">Combining multimodal technology-mediated and peer feedback: effects on second language (L2) learners' complexity, accuracy, and fluency (CAF) in writing.</h4>
+                <div class="pub-journal">Computer Assisted Language Learning, 1-39.</div>
+                <div class="pub-authors">Imsa-ard, P. & Barrot, J. S.</div>
+                <a href="https://doi.org/10.1080/09588221.2024.2443770" target="_blank" class="pub-doi">DOI: 10.1080/09588221.2024.2443770</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2024</span><span class="badge badge-q1">SCOPUS Q1</span></div>
+                <h4 class="pub-title">Investigating STEM secondary school teachers' CLIL assessment practices in EFL contexts: The repertory grid technique.</h4>
+                <div class="pub-journal">RELC Journal, 00336882241304123.</div>
+                <div class="pub-authors">Kruawong, T. & Imsa-ard, P.</div>
+                <a href="https://doi.org/10.1177/00336882241304123" target="_blank" class="pub-doi">DOI: 10.1177/00336882241304123</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2024</span><span class="badge badge-q1">SCOPUS Q1</span></div>
+                <h4 class="pub-title">"It felt like we were trying to get through the class...": Insights on learners' FL boredom from Q methodology.</h4>
+                <div class="pub-journal">Heliyon, 10(23), e40578.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://doi.org/10.1016/j.heliyon.2024.e40578" target="_blank" class="pub-doi">DOI: 10.1016/j.heliyon.2024.e40578</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2024</span><span class="badge badge-q1">SCOPUS Q1</span></div>
+                <h4 class="pub-title">It's the mind that matters: A factor analysis of L2 positive psychology constructs in limited English exposure language learning.</h4>
+                <div class="pub-journal">LEARN Journal: Language Education and Acquisition Research Network, 17(2), 419-446.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://so04.tci-thaijo.org/index.php/LEARN/article/view/274112" target="_blank" class="pub-doi">View Article (TCI) ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2024</span><span class="badge badge-q1">SCOPUS Q1</span></div>
+                <h4 class="pub-title">Illuminating inclusive pedagogy in Thai EFL classrooms: Critical perspectives and practices in higher education.</h4>
+                <div class="pub-journal">3L: Language, Linguistics, Literature® The Southeast Asian Journal of English Language Studies, 30(3), 229-245.</div>
+                <div class="pub-authors">Attachoo, B., & Imsa-ard, P.</div>
+                <a href="http://doi.org/10.17576/3L-2024-3003-16" target="_blank" class="pub-doi">DOI: 10.17576/3L-2024-3003-16</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2024</span><span class="badge badge-tci">TCI Tier 1</span></div>
+                <h4 class="pub-title">'I'm happy with my job, but...': EFL teachers' well-being and boreout.</h4>
+                <div class="pub-journal">NIDA Journal of Language and Communication, 29(46), 23-45.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q='I'm+happy+with+my+job,+but...':+EFL+teachers'+well-being+and+boreout" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2024</span><span class="badge badge-q2">SCOPUS Q2</span></div>
+                <h4 class="pub-title">Integrating reflective practice into undergraduate teacher education programmes in ELT: A no-lose deal for Thai university.</h4>
+                <div class="pub-journal">PASAA, 68(1), 440-468.</div>
+                <div class="pub-authors">Cirocki, A., & Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=Integrating+reflective+practice+into+undergraduate+teacher+education+programmes+in+ELT" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2024</span><span class="badge badge-eric">ERIC</span></div>
+                <h4 class="pub-title">Navigating Al writing assistance tools: Unveiling the insights of Thai EFL learners.</h4>
+                <div class="pub-journal">THAITESOL Journal, 37(1), 111-131.</div>
+                <div class="pub-authors">Thangthong, P., Phiromsombut, J., & Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=Navigating+Al+writing+assistance+tools:+Unveiling+the+insights+of+Thai+EFL+learners" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2024</span><span class="badge badge-tci">TCI Tier 2</span></div>
+                <h4 class="pub-title">Discovering the vibrant world of 'out-of-class' English learning through Tik Tok: Views from Thai EFL university students.</h4>
+                <div class="pub-journal">Pasaa Paritat, 39, 146-170.</div>
+                <div class="pub-authors">Ounwised, A., Rangpung, P., Pitaktum, K., & Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=Discovering+the+vibrant+world+of+'out-of-class'+English+learning+through+Tik+Tok" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2024</span><span class="badge badge-q1">SCOPUS Q1</span></div>
+                <h4 class="pub-title">Exploring the impact of e-portfolio reflections on learning efficiency and cognitive loads among Thai undergraduate students.</h4>
+                <div class="pub-journal">World Journal of English Language, 14(4), 350-365.</div>
+                <div class="pub-authors">Chuanchom, C., Wichamuk, P., & Imsa-ard, P.</div>
+                <a href="https://doi.org/10.5430/wjel.v14n4p350" target="_blank" class="pub-doi">DOI: 10.5430/wjel.v14n4p350</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2023</span><span class="badge badge-q1">SCOPUS Q1</span></div>
+                <h4 class="pub-title">Language assessment literacy: A preliminary survey of Thai EFL university lecturers' language assessment knowledge, beliefs, and practices.</h4>
+                <div class="pub-journal">PASAA, 66, 33-76.</div>
+                <div class="pub-authors">Imsa-ard, P. & Tangkiengsirisin, S.</div>
+                <a href="https://scholar.google.com/scholar?q=Language+assessment+literacy:+A+preliminary+survey+of+Thai+EFL+university+lecturers" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2023</span><span class="badge badge-q2">SCOPUS Q2</span></div>
+                <h4 class="pub-title">Digitally-mediated Language Assessment Practice (D-LAP): Qualitative case studies of four Thai EFL university lecturers.</h4>
+                <div class="pub-journal">REFLections, 30(2), 403-427.</div>
+                <div class="pub-authors">Imsa-ard, P. & Tangkiengsirisin, S.</div>
+                <a href="https://scholar.google.com/scholar?q=Digitally-mediated+Language+Assessment+Practice+(D-LAP)" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2023</span><span class="badge badge-q2">SCOPUS Q2</span></div>
+                <h4 class="pub-title">Moving towards Intercultural Communicative Competence (ICC): Thai EFL teachers' self-reported levels of ICC and Intercultural Sensitivity (IS).</h4>
+                <div class="pub-journal">Issues in Educational Research, 33(1), 71-90.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=Moving+towards+Intercultural+Communicative+Competence+(ICC):+Thai+EFL+teachers" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2022</span><span class="badge badge-tci">Int. Conference</span></div>
+                <h4 class="pub-title">Do I know as much as I think I know?: The effect of the test on Thai EFL undergraduate students' perceived grammatical knowledge.</h4>
+                <div class="pub-journal">22nd SEAAIR Annual Conference, Seoul, South Korea.</div>
+                <div class="pub-authors">lamsirirak, E. & Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=Do+I+know+as+much+as+I+think+I+know%3F:+The+effect+of+the+test+on+Thai+EFL+undergraduate+students" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2022</span><span class="badge badge-q1">SCOPUS Q1</span></div>
+                <h4 class="pub-title">"A Whole New World... Wait, Is It a Whole, Entire, or Total World?": The extraction of collocations for the three English synonym discrimination.</h4>
+                <div class="pub-journal">3L: Language, Linguistics, Literature®, 28(2), 67-82.</div>
+                <div class="pub-authors">Imsa-ard, P. & Phoocharoensil, S.</div>
+                <a href="https://scholar.google.com/scholar?q=A+Whole+New+World...+Wait,+Is+It+a+Whole,+Entire,+or+Total+World" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2022</span><span class="badge badge-q4">SCOPUS Q4</span></div>
+                <h4 class="pub-title">Enhancing lesson plan writing skills through Screencast-Assisted Written Feedback (SAWF): A study of Thai pre-service EFL teachers.</h4>
+                <div class="pub-journal">The International Journal of Pedagogy and Curriculum, 29(1), 67-82.</div>
+                <div class="pub-authors">Imsa-ard, P. & Soontornwipast, K.</div>
+                <a href="https://scholar.google.com/scholar?q=Enhancing+lesson+plan+writing+skills+through+Screencast-Assisted+Written+Feedback" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2022</span><span class="badge badge-eric">ERIC</span></div>
+                <h4 class="pub-title">Reading better?: Enhancing Thai EFL secondary school students' reading comprehension abilities with the use of graphic organizers.</h4>
+                <div class="pub-journal">English Language Teaching, 15(4), 1-13.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=Reading+better%3F:+Enhancing+Thai+EFL+secondary+school+students'+reading+comprehension+abilities" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2022</span><span class="badge badge-tci">Int. Conference</span></div>
+                <h4 class="pub-title">' wish to know about my teaching': Thai pre-service EFL teachers' expectations to learn from their supervisors.</h4>
+                <div class="pub-journal">Proceedings of the International and National Teacher Education Conference (INTEC 2022).</div>
+                <div class="pub-authors">Imsa-ard, P. & lamsirirak, E.</div>
+                <a href="https://scholar.google.com/scholar?q=I+wish+to+know+about+my+teaching:+Thai+pre-service+EFL+teachers'+expectations+to+learn" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2022</span><span class="badge badge-tci">TCI 1</span></div>
+                <h4 class="pub-title">The development vocabulary acquisition for Thai kindergarteners through digital storytelling (DST).</h4>
+                <div class="pub-journal">Journal of Roi Kaensarn Academi, 7(7), 149-160.</div>
+                <div class="pub-authors">Prongkitsanuluck, N., Adipat, S., & Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=The+development+vocabulary+acquisition+for+Thai+kindergarteners+through+digital+storytelling" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2021</span><span class="badge badge-q1">SCOPUS Q1</span></div>
+                <h4 class="pub-title">Choices of teaching practices: Does the English test in the national examination cause the teachers to teach to the test?</h4>
+                <div class="pub-journal">TESOL International Journal, 16(5), 56-86.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=Choices+of+teaching+practices:+Does+the+English+test+in+the+national+examination+cause" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2021</span><span class="badge badge-eric">ERIC</span></div>
+                <h4 class="pub-title">Muffled voices from Thai pre-service teachers: Challenges and difficulties during teaching practicum.</h4>
+                <div class="pub-journal">Shanlax International Journal of Education, 9(3), 246-260.</div>
+                <div class="pub-authors">Imsa-ard, P., Wichamuk, P., & Chuanchom, C.</div>
+                <a href="https://scholar.google.com/scholar?q=Muffled+voices+from+Thai+pre-service+teachers:+Challenges+and+difficulties+during+teaching+practicum" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2021</span><span class="badge badge-tci">TCI 1</span></div>
+                <h4 class="pub-title">A corpus-based study of English synonymous verbs: Concentrate, emphasize, and focus.</h4>
+                <div class="pub-journal">NIDA Journal of Language and Communication, 26(40), 22-40.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=A+corpus-based+study+of+English+synonymous+verbs:+Concentrate,+emphasize,+and+focus" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2021</span><span class="badge badge-tci">TCI 2</span></div>
+                <h4 class="pub-title">Genre analysis of research article abstracts in language education and acquisition research.</h4>
+                <div class="pub-journal">KKU International Journal of Humanities and Social Sciences, 11(2), 74-98.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=Genre+analysis+of+research+article+abstracts+in+language+education+and+acquisition+research" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2020</span><span class="badge badge-tci">TCI 2</span></div>
+                <h4 class="pub-title">Potential guidelines for implementing performance-based assessment for Thai EFL secondary school teachers.</h4>
+                <div class="pub-journal">NIDA Journal of Language and Communication, 25(38), 30-42.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=Potential+guidelines+for+implementing+performance-based+assessment+for+Thai+EFL" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2020</span><span class="badge badge-q2">SCOPUS Q2</span></div>
+                <h4 class="pub-title">Motivation and attitudes towards English language learning in Thailand: A large-scale survey.</h4>
+                <div class="pub-journal">REFLections, 27(2), 140-161.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=Motivation+and+attitudes+towards+English+language+learning+in+Thailand:+A+large-scale+survey" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2020</span><span class="badge badge-q3">SCOPUS Q3</span></div>
+                <h4 class="pub-title">Voices from Thai EFL teachers: Perceptions and beliefs towards the national examination in Thailand.</h4>
+                <div class="pub-journal">LEARN Journal: Language Education and Research Network, 13(2), 269-287.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=Voices+from+Thai+EFL+teachers:+Perceptions+and+beliefs+towards+the+national+examination+in+Thailand" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2020</span><span class="badge badge-tci">TCI Tier 2</span></div>
+                <h4 class="pub-title">Thai university students' perceptions towards the abrupt transition to 'forced' online learning in the COVID-19 situation.</h4>
+                <div class="pub-journal">Journal of Education Khon Kaen University, 43(3), 30-44.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=Thai+university+students'+perceptions+towards+the+abrupt+transition+to+'forced'+online+learning" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2020</span><span class="badge badge-tci">International</span></div>
+                <h4 class="pub-title">Being an effective writing teacher: Understanding writing theories behind the product, process, and genre approaches.</h4>
+                <div class="pub-journal">International Journal of Linguistics and Translation Studies, 1(2), 35-47.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=Being+an+effective+writing+teacher:+Understanding+writing+theories+behind+the+product,+process" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+            <div class="pub-card">
+                <div class="pub-meta"><span class="badge badge-year">2019</span><span class="badge badge-tci">TCI Tier 1</span></div>
+                <h4 class="pub-title">TOEIC Reading section: The evaluation of the four cardinal criteria for testing a test.</h4>
+                <div class="pub-journal">NIDA Journal of Language and Communication, 24(36), 91-110.</div>
+                <div class="pub-authors">Imsa-ard, P.</div>
+                <a href="https://scholar.google.com/scholar?q=TOEIC+Reading+section:+The+evaluation+of+the+four+cardinal+criteria+for+testing+a+test" target="_blank" class="pub-doi scholar-link">Search on Google Scholar ↗</a>
+            </div>
+
+        </div>
+
+        <h3 class="section-title">Recent Research Projects</h3>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="proj-year">ONGOING</div>
+                <h4 class="proj-title">Self-assessment scale for measuring students' criticality in academic writing</h4>
+                <div class="proj-role">Principal Investigator • Thammasat University</div>
+                <div class="proj-status">ACTIVE</div>
+            </div>
+            <div class="project-card">
+                <div class="proj-year">ONGOING</div>
+                <h4 class="proj-title">Online peer-dynamic assessment on writing skills and academic hardiness</h4>
+                <div class="proj-role">Principal Investigator • Thammasat University</div>
+                <div class="proj-status">ACTIVE</div>
+            </div>
+            <div class="project-card">
+                <div class="proj-year">ONGOING</div>
+                <h4 class="proj-title">Idiodynamic Method and Oral Presentation</h4>
+                <div class="proj-role">Principal Investigator • Thammasat University</div>
+                <div class="proj-status">ACTIVE</div>
+            </div>
+            <div class="project-card">
+                <div class="proj-year">ONGOING</div>
+                <h4 class="proj-title">Teachers' and Students' Construction of Success in EMI</h4>
+                <div class="proj-role">Co-Researcher • The Education University of Hong Kong</div>
+                <div class="proj-status">ACTIVE</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
