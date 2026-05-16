@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Pariwat Imsa-ard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0F172A; /* Slate 900 */
+            --accent: #E05A00; /* Modern burnt orange */
+            --bg-body: #F8FAFC; /* Slate 50 */
+            --card-bg: #FFFFFF;
+            --text-main: #1E293B; /* Slate 800 */
+            --text-muted: #64748B; /* Slate 500 */
+            --border: #E2E8F0; /* Slate 200 */
+            --radius: 16px;
+            --shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 4rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Top Header Area */
+        .page-header {
+            margin-bottom: 2rem;
+        }
+        .page-header .category {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-top: 0.25rem;
+            letter-spacing: -0.02em;
+        }
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+            max-width: 600px;
+        }
+
+        /* Profile Actions (Buttons) */
+        .profile-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-primary {
+            background-color: var(--accent);
+            color: #fff;
+        }
+        .btn-primary:hover { background-color: #c24d00; transform: translateY(-2px); }
+        .btn-outline {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+        }
+        .btn-outline:hover { border-color: var(--text-muted); transform: translateY(-2px); }
+
+        /* Card Component */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--bg-body);
+            padding-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Main Profile Banner */
+        .profile-banner {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .profile-img-wrapper {
+            width: 140px;
+            height: 140px;
+            flex-shrink: 0;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 4px solid #fff;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+        }
+        .profile-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .profile-info h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+        .profile-info h3 {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        .contact-details {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .contact-details a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+        /* Modern Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 1px var(--border);
+        }
+        .timeline-date {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+        .timeline-content h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .timeline-content p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* Two Column Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* Education List */
+        .edu-list { list-style: none; }
+        .edu-item {
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .edu-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .edu-item h4 { font-size: 1rem; font-weight: 700; color: var(--primary); }
+        .edu-item .degree { font-size: 0.95rem; color: var(--text-main); font-weight: 500; margin-top: 0.2rem; }
+        .edu-item .year { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-top: 0.4rem; }
+
+        /* Research Tags */
+        .tags-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .tag {
+            background: rgba(224, 90, 0, 0.08);
+            color: var(--accent);
+            border: 1px solid rgba(224, 90, 0, 0.15);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Insights List */
+        .insights-list {
+            padding-left: 1.2rem;
+            color: var(--text-muted);
+        }
+        .insights-list li { margin-bottom: 0.75rem; font-size: 0.95rem; }
+        .insights-list strong { color: var(--primary); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .profile-banner { flex-direction: column; text-align: center; }
+            .contact-details { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header class="page-header">
+            <span class="category">Academic Profile</span>
+            <h1>Profile</h1>
+            <p>A comprehensive overview of academic history, administrative roles, and research interests based on the Curriculum Vitae.</p>
+            
+            <div class="profile-actions">
+                <a href="#" class="btn btn-primary">Open Full CV</a>
+                <a href="#" class="btn btn-outline">Google Scholar</a>
+                <a href="#" class="btn btn-outline">ORCID</a>
+            </div>
+        </header>
+
+        <section class="card profile-banner">
+            <div class="profile-img-wrapper">
+                <img src="./profile.jpg" alt="Assoc. Prof. Dr. Pariwat Imsa-ard">
+            </div>
+            <div class="profile-info">
+                <h2>Assoc. Prof. Dr. Pariwat Imsa-ard</h2>
+                <h3>Department Head & Associate Professor of Education</h3>
+                <div class="contact-details">
+                    <span><strong>Institution:</strong> Faculty of Liberal Arts, Thammasat University</span>
+                    <span><strong>Email:</strong> <a href="mailto:pariwat@tu.ac.th">pariwat@tu.ac.th</a></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h3 class="card-title">Work & Administrative Timeline</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2025 - Present</div>
+                    <div class="timeline-content">
+                        <h4>Associate Professor & Department Head</h4>
+                        <p>Department of English, Faculty of Liberal Arts, Thammasat University</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - 2025</div>
+                    <div class="timeline-content">
+                        <h4>Assistant Professor</h4>
+                        <p>Faculty of Liberal Arts, Thammasat University</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - 2023</div>
+                    <div class="timeline-content">
+                        <h4>Assistant Professor</h4>
+                        <p>Ramkhamhaeng University</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2020 - 2022</div>
+                    <div class="timeline-content">
+                        <h4>Lecturer</h4>
+                        <p>Ramkhamhaeng University</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2015 - 2022</div>
+                    <div class="timeline-content">
+                        <h4>Adjunct English Language Instructor</h4>
+                        <p>Srinakarinwirot University & Dhonburi Rajabhat University</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid-2">
+            
+            <section class="card">
+                <h3 class="card-title">Education</h3>
+                <ul class="edu-list">
+                    <li class="edu-item">
+                        <h4>Thammasat University, Thailand</h4>
+                        <div class="degree">Ph.D. in English Language Teaching (International Program)</div>
+                        <div class="year">2020 - 2023 • GPAX: 4.00</div>
+                    </li>
+                    <li class="edu-item">
+                        <h4>Sukhothai Thammathirat Open University</h4>
+                        <div class="degree">M.Ed. in Educational Measurement and Evaluation</div>
+                        <div class="year">2024 - Present (Ongoing)</div>
+                    </li>
+                    <li class="edu-item">
+                        <h4>University of York, United Kingdom</h4>
+                        <div class="degree">M.A. in Teaching English to Speakers of Other Languages (Merit)</div>
+                        <div class="year">2018 - 2019</div>
+                    </li>
+                    <li class="edu-item">
+                        <h4>Chulalongkorn University, Thailand</h4>
+                        <div class="degree">B.Ed. in Non-Formal Education and English Majors (Second-class Honour)</div>
+                        <div class="year">2013 - 2017</div>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="card">
+                <h3 class="card-title">Research Interests</h3>
+                <div class="tags-wrapper">
+                    <span class="tag">Language Testing & Assessment</span>
+                    <span class="tag">English Language Teaching</span>
+                    <span class="tag">Teacher Education</span>
+                    <span class="tag">Teacher Professional Development</span>
+                    <span class="tag">Reflective Teaching</span>
+                    <span class="tag">Repertory Grid</span>
+                </div>
+            </section>
+
+        </div>
+
+        <section class="card">
+            <h3 class="card-title">Professional Insights & Achievements</h3>
+            <ul class="insights-list">
+                <li><strong>Editorial Leadership:</strong> Editor for <em>rEFLections</em> (2024-present) and <em>THAITESOL Journal</em> (2024-present).</li>
+                <li><strong>Executive Roles:</strong> Executive Committee member for <em>Thailand TESOL</em> (Chairs of Global Partnerships) and <em>Thai Association for Applied Linguistics (TAAL)</em>.</li>
+                <li><strong>Awards & Honors:</strong> Recipient of The Distinguished PhD Thesis Award (Thammasat University), The Academic Excellence Scholarship (University of York), and The Outstanding Teaching Award (Chulalongkorn University).</li>
+                <li><strong>Research Supervision:</strong> Currently supervising multiple Ph.D. and M.A. candidates in English Language Studies and Applied Linguistics.</li>
+            </ul>
+        </section>
+
+    </div>
+
+</body>
+</html>
