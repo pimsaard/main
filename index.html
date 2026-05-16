@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pariwat Imsa-ard - Academic Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -23,20 +23,19 @@
         }
 
         body {
-            font-family: 'Prompt', 'Inter', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
         }
 
-        /* Container กำหนดความกว้างหน้าเว็บ */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Header (แถบบนสุด) */
+        /* Header */
         header {
             display: flex;
             justify-content: space-between;
@@ -59,8 +58,9 @@
         .nav-links a {
             text-decoration: none;
             color: var(--text-gray);
-            margin-left: 20px;
+            margin-left: 25px;
             font-size: 0.95rem;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
@@ -68,7 +68,7 @@
             color: var(--primary-orange);
         }
 
-        /* Hero Section (ส่วนแนะนำตัวหลัก) */
+        /* Hero Section */
         .hero {
             display: flex;
             justify-content: space-between;
@@ -92,17 +92,18 @@
 
         .hero h1 {
             font-size: 3.5rem;
-            font-weight: 700;
+            font-weight: 800;
             line-height: 1.1;
             margin-bottom: 15px;
             color: #111;
+            letter-spacing: -1px;
         }
 
         .hero .position {
             font-size: 1.1rem;
             font-weight: 500;
             color: var(--text-gray);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .hero .bio-short {
@@ -127,7 +128,7 @@
             font-weight: 600;
         }
 
-        /* ปุ่มต่างๆ */
+        /* Buttons */
         .btn-group {
             display: flex;
             gap: 15px;
@@ -138,7 +139,7 @@
             padding: 10px 24px;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.95rem;
             transition: all 0.3s;
             border: 1px solid var(--border-color);
@@ -161,7 +162,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        /* รูปโปรไฟล์ */
+        /* Profile Image */
         .hero-image {
             width: 300px;
             height: 380px;
@@ -176,7 +177,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* Work Areas Section (ส่วนกล่องด้านล่าง) */
+        /* Work Areas */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -186,7 +187,8 @@
 
         .section-header h2 {
             font-size: 2rem;
-            font-weight: 700;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .section-header p {
@@ -225,7 +227,9 @@
 
         .card h3 {
             font-size: 1.3rem;
+            font-weight: 700;
             margin-bottom: 15px;
+            letter-spacing: -0.5px;
         }
 
         .card p {
@@ -243,12 +247,12 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive Design สำหรับมือถือ */
+        /* Responsive */
         @media (max-width: 900px) {
             .hero { flex-direction: column; }
             .hero-image { width: 100%; height: auto; max-width: 400px; margin: 0 auto; }
             .grid-cards { grid-template-columns: repeat(2, 1fr); }
-            .nav-links { display: none; } /* ซ่อนเมนูบนมือถือชั่วคราวให้ดูเรียบร้อย */
+            .nav-links { display: none; }
         }
 
         @media (max-width: 600px) {
@@ -263,7 +267,7 @@
     <div class="container">
         <header>
             <div class="header-left">
-                <div class="name">ปริวรรต อิ่มสอาด</div>
+                <div class="name">Pariwat Imsa-ard</div>
                 <div class="desc">Academic work and public writing</div>
             </div>
             <nav class="nav-links">
@@ -279,11 +283,11 @@
             <section class="hero">
                 <div class="hero-content">
                     <span class="tags">ENGLISH LANGUAGE TEACHING / APPLIED LINGUISTICS / LANGUAGE ASSESSMENT / TEACHER EDUCATION</span>
-                    <h1>ปริวรรต อิ่มสอาด</h1>
-                    <p class="position">รองศาสตราจารย์ คณะศิลปศาสตร์ มหาวิทยาลัยธรรมศาสตร์</p>
-                    <p class="bio-short">อาจารย์ นักวิจัย และผู้ที่หลงใหลในด้านการทดสอบและประเมินผลทางภาษา การสอนภาษาอังกฤษ และจิตวิทยาการเรียนรู้ภาษา</p>
+                    <h1>Pariwat Imsa-ard</h1>
+                    <p class="position">Associate Professor, Faculty of Liberal Arts, Thammasat University</p>
+                    <p class="bio-short">Lecturer, researcher, and enthusiast in language testing and assessment, English language teaching, and the psychology of language learning.</p>
                     <p class="bio-long">
-                        ผมทำงานวิจัยด้านการเรียนการสอนภาษาอังกฤษ (ELT) โดยมุ่งเน้นที่การวิเคราะห์ด้วยระเบียบวิธีวิจัยแบบเชิงปริมาณ และ RGT นอกจากนี้ยังให้ความสนใจในด้านจิตวิทยาของการเรียนภาษา (ความเบื่อหน่าย ความวิตกกังวล ความอยากรู้อยากเห็น) รวมถึงการพัฒนากรอบแนวคิด CPI สำหรับใช้งาน AI ในการเรียนภาษา
+                        My research focuses on English Language Teaching (ELT), specifically employing quantitative research methods and RGT. I am highly interested in the psychology of language learning (e.g., boredom, anxiety, curiosity) and the development of the Cognitive Preservation Intelligence (CPI) framework for AI integration in language education.
                     </p>
                     <div class="contact-info">
                         Contact: <a href="mailto:pariwat@tu.ac.th">pariwat@tu.ac.th</a>
@@ -298,58 +302,58 @@
                 </div>
                 
                 <div class="hero-image">
-                    <img src="https://github.com/pimsaard/main/blob/main/taepro.jpg?raw=true" alt="Assoc. Prof. Pariwat Imsa-ard">
+                    <img src="./taepro.jpg" alt="Assoc. Prof. Pariwat Imsa-ard">
                 </div>
             </section>
 
             <section class="work-areas">
                 <div class="section-header">
                     <h2>Work Areas</h2>
-                    <p>ทางเข้าไปยังงานวิจัย โครงการ งานบรรณาธิการ และงานสอน</p>
+                    <p>Gateways to research, projects, editorial work, and teaching</p>
                 </div>
                 
                 <div class="grid-cards">
                     <div class="card">
-                        <div class="card-tag">Publications</div>
-                        <h3>ผลงานวิจัย</h3>
-                        <p>ผลงานวิจัยด้าน SLA, ผลกระทบของ Extramural English (EE) และจิตวิทยาการเรียนรู้ภาษา รวมถึงกรอบแนวคิด Cognitive Preservation Intelligence (CPI)</p>
+                        <div class="card-tag">PUBLICATIONS</div>
+                        <h3>Publications</h3>
+                        <p>Research on Second Language Acquisition (SLA), the effects of Extramural English (EE), the psychology of language learning, and the Cognitive Preservation Intelligence (CPI) framework.</p>
                     </div>
 
                     <div class="card">
-                        <div class="card-tag">Projects & Assessment</div>
-                        <h3>โครงการทดสอบ</h3>
-                        <p>การจัดการและพัฒนาโครงการทดสอบความรู้ภาษาอังกฤษ TU-LEVEL English Proficiency Test ของมหาวิทยาลัย</p>
+                        <div class="card-tag">PROJECTS & ASSESSMENT</div>
+                        <h3>Assessment Projects</h3>
+                        <p>Management and development of the university's TU-LEVEL English Proficiency Test project.</p>
                     </div>
 
                     <div class="card">
-                        <div class="card-tag">Editorial Work</div>
-                        <h3>งานบรรณาธิการ</h3>
-                        <p>บทบาทบรรณาธิการระดับชาตและนานาชาติ รวมถึง THAITESOL Journal, Journal of Studies in the English Language (jSEL) และ rEFLections</p>
+                        <div class="card-tag">EDITORIAL WORK</div>
+                        <h3>Editorial Work</h3>
+                        <p>National and international editorial roles, including the THAITESOL Journal, Journal of Studies in the English Language (jSEL), and rEFLections.</p>
                     </div>
 
                     <div class="card">
-                        <div class="card-tag">Teaching & Mentoring</div>
-                        <h3>การสอนและให้คำปรึกษา</h3>
-                        <p>การจัดการเรียนการสอนระดับปริญญาบัณฑิตและบัณฑิตศึกษา รวมถึงการเป็นที่ปรึกษาให้นักศึกษาระดับปริญญาเอกด้านภาษาและการสื่อสารระดับโลก</p>
+                        <div class="card-tag">TEACHING & MENTORING</div>
+                        <h3>Teaching & Mentoring</h3>
+                        <p>Undergraduate and graduate teaching, as well as mentoring Ph.D. students in language and global communication.</p>
                     </div>
 
                     <div class="card">
-                        <div class="card-tag">Research Methods</div>
-                        <h3>ระเบียบวิธีวิจัย</h3>
-                        <p>ความเชี่ยวชาญด้านการวิเคราะห์ข้อมูลด้วย Repertory Grid Technique (RGT), Q-methodology และ Structural Equation Modeling (SEM)</p>
+                        <div class="card-tag">RESEARCH METHODS</div>
+                        <h3>Research Methods</h3>
+                        <p>Expertise in data analysis utilizing the Repertory Grid Technique (RGT), Q-methodology, and Structural Equation Modeling (SEM).</p>
                     </div>
 
                     <div class="card">
-                        <div class="card-tag">Academic Profile</div>
-                        <h3>ข้อมูล Profile</h3>
-                        <p>ประวัติการศึกษา (Ph.D. in English Language Teaching/Applied Linguistics) ความเชี่ยวชาญ และเครือข่ายความร่วมมือทางวิชาการ</p>
+                        <div class="card-tag">ACADEMIC PROFILE</div>
+                        <h3>Academic Profile</h3>
+                        <p>Educational background (Ph.D. in English Language Teaching / Applied Linguistics), areas of expertise, and academic collaboration networks.</p>
                     </div>
                 </div>
             </section>
         </main>
 
         <footer>
-            <div>© รศ.ดร. ปริวรรต อิ่มสอาด</div>
+            <div>© Assoc. Prof. Pariwat Imsa-ard, Ph.D.</div>
             <div>Academic work and public writing.</div>
         </footer>
     </div>
