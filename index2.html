@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pariwat Imsa-ard - Academic Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --theme-blue: #0b3d91; /* สีน้ำเงินเข้มแบบวิชาการ */
+            --theme-light-blue: #eef3f8;
+            --theme-orange: #f39c12;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --bg-page: #f4f5f7;
+            --border-color: #e1e4e8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background-color: var(--theme-blue);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .top-banner h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .top-banner p {
+            font-size: 1.05rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .top-banner .contact-info {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: white;
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-brand { font-weight: 700; color: var(--theme-blue); font-size: 1.2rem; }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            margin-left: 20px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover { color: var(--theme-orange); }
+
+        /* Main Layout */
+        .layout {
+            max-width: 1200px;
+            margin: 30px auto;
+            display: flex;
+            gap: 25px;
+            padding: 0 20px;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-box {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-title {
+            color: var(--theme-blue);
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border-bottom: 2px solid var(--theme-light-blue);
+            padding-bottom: 8px;
+        }
+
+        .side-nav a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: var(--text-main);
+            border-radius: 4px;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+        
+        .side-nav a.active, .side-nav a:hover {
+            background-color: var(--theme-light-blue);
+            color: var(--theme-blue);
+            font-weight: 600;
+        }
+
+        .quick-info-item {
+            margin-bottom: 15px;
+        }
+        .quick-info-item h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+        .quick-info-item p {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Right Content */
+        .content {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        .content-box {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--theme-blue);
+            margin-bottom: 20px;
+            display: inline-block;
+            border-bottom: 3px solid var(--theme-orange);
+            padding-bottom: 5px;
+        }
+
+        .bio-text {
+            font-size: 1rem;
+            color: var(--text-main);
+            text-align: justify;
+        }
+
+        /* News Timeline */
+        .news-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        .news-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .news-date {
+            font-weight: 700;
+            color: var(--theme-orange);
+            min-width: 80px;
+        }
+        .news-text {
+            font-size: 0.95rem;
+        }
+
+        /* Services List */
+        .service-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .service-list li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 850px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-banner">
+        <h1>Pariwat Imsa-ard</h1>
+        <p>Associate Professor, Faculty of Liberal Arts, Thammasat University</p>
+        <div class="contact-info">
+            <span>✉ pariwat@tu.ac.th</span>
+            <span>📍 Bangkok, Thailand</span>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">PI</div>
+            <div class="nav-links">
+                <a href="#">Bio</a>
+                <a href="#">News</a>
+                <a href="#">Publications</a>
+                <a href="#">Services</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="layout">
+        
+        <aside class="sidebar">
+            <div class="sidebar-box">
+                <h3 class="sidebar-title">Navigation</h3>
+                <nav class="side-nav">
+                    <a href="#" class="active">Biography</a>
+                    <a href="#">Recent News</a>
+                    <a href="#">Publications</a>
+                    <a href="#">Academic Services</a>
+                </nav>
+            </div>
+
+            <div class="sidebar-box">
+                <h3 class="sidebar-title">Quick Info</h3>
+                <div class="quick-info-item">
+                    <h4>PhD</h4>
+                    <p>English Language Teaching / Applied Linguistics</p>
+                </div>
+                <div class="quick-info-item">
+                    <h4>Research Areas</h4>
+                    <p>Language Testing & Assessment, SLA, Psychology of Language Learning</p>
+                </div>
+                <div class="quick-info-item">
+                    <h4>Framework</h4>
+                    <p>Cognitive Preservation Intelligence (CPI)</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content">
+            
+            <div class="content-box">
+                <h2 class="section-title">Brief Biography</h2>
+                <p class="bio-text">
+                    I am an Associate Professor at the Faculty of Liberal Arts, Thammasat University. I received my Ph.D. in English Language Teaching / Applied Linguistics. My primary research focuses on language testing and assessment, Second Language Acquisition (SLA), and teacher education. I am particularly interested in the psychology of language learning—exploring constructs such as boredom, anxiety, and curiosity—and frequently utilize research methods including the Repertory Grid Technique (RGT), Q-methodology, and Structural Equation Modeling (SEM). Additionally, I have been working on developing the Cognitive Preservation Intelligence (CPI) framework to identify human cognitive processes in AI-mediated language learning, and I am actively involved in the TU-LEVEL English Proficiency Test project.
+                </p>
+            </div>
+
+            <div class="content-box">
+                <h2 class="section-title">Recent News</h2>
+                
+                <div class="news-item">
+                    <div class="news-date">2026-09</div>
+                    <div class="news-text">Scheduled to deliver a professional research presentation in Berlin, Germany.</div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date">2026-04</div>
+                    <div class="news-text">Officially approved for promotion to the academic rank of Associate Professor by the Thammasat University Council.</div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date">2026-04</div>
+                    <div class="news-text">Successfully managed official ISBN registrations for international conference proceedings.</div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date">2025-07</div>
+                    <div class="news-text">Presented research findings at the AsiaTEFL 2025 conference held at the Education University of Hong Kong.</div>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <h2 class="section-title">Academic Services</h2>
+                
+                <h4 style="margin-bottom: 10px; color: var(--theme-blue);">Editorial Board Memberships</h4>
+                <ul class="service-list">
+                    <li><strong>Editor</strong>, THAITESOL Journal</li>
+                    <li><strong>Editorial Position</strong>, Journal of Studies in the English Language (jSEL)</li>
+                    <li><strong>Associate Editor</strong>, rEFLections</li>
+                </ul>
+
+                <h4 style="margin-bottom: 10px; color: var(--theme-blue);">Mentorship & Supervision</h4>
+                <ul class="service-list">
+                    <li>Ph.D. Student Supervisor (Language and Global Communication)</li>
+                    <li>Academic Mentoring for researchers and postgraduate students</li>
+                </ul>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>
