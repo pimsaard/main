@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Projects | Pariwat Imsa-ard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #111827; 
+            --accent: #C2410C; 
+            --bg-body: #F9FAFB;
+            --surface: #FFFFFF;
+            --text-main: #374151;
+            --text-muted: #6B7280;
+            --border: #E5E7EB;
+            --border-hover: rgba(194, 65, 12, 0.4);
+            --radius-lg: 20px;
+            --radius-md: 16px;
+            --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
+            --shadow-hover: 0 20px 25px -5px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 4rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .category-label {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+            background: rgba(194, 65, 12, 0.1);
+            padding: 0.4rem 1rem;
+            border-radius: 99px;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Search Box & Filters */
+        .controls-container {
+            max-width: 700px;
+            margin: 0 auto 3rem auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        .search-input {
+            width: 100%;
+            padding: 1.2rem 1.5rem 1.2rem 3rem;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--primary);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            outline: none;
+            transition: var(--transition);
+        }
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(194, 65, 12, 0.1);
+        }
+        /* Search Icon */
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 0.5rem 1.25rem;
+            border-radius: 99px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .filter-btn:hover:not(.active) {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Clickable Grid Layout */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        /* The Clickable Project Card */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--border-hover);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .status-badge {
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .status-ongoing { background: #ECFDF5; color: #059669; }
+        .status-completed { background: #F3F4F6; color: #4B5563; }
+        .status-framework { background: #EEF2FF; color: #4F46E5; }
+
+        .role {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .project-card h2 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+            transition: color 0.2s;
+        }
+        .project-card:hover h2 {
+            color: var(--accent);
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        /* Hover Navigation Arrow & Tags */
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            padding-top: 1.5rem;
+            margin-top: auto;
+        }
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            background: var(--bg-body);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+        
+        .read-more {
+            font-weight: 700;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: var(--transition);
+        }
+        .project-card:hover .read-more {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* 'No Results' Message */
+        .no-results {
+            display: none;
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: var(--surface);
+            border: 1px dashed var(--border);
+            border-radius: var(--radius-lg);
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.2rem; }
+            .project-grid { grid-template-columns: 1fr; }
+            .read-more { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header class="page-header">
+            <span class="category-label">Research Lab</span>
+            <h1>Academic Projects & Initiatives</h1>
+            <p>Explore detailed case studies, active research grants, and framework development across English Language Teaching and assessment.</p>
+        </header>
+
+        <div class="controls-container">
+            <div class="search-wrapper">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search projects by keyword, topic, or methodology...">
+            </div>
+            
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="assessment">Language Assessment</button>
+                <button class="filter-btn" data-filter="framework">AI & Frameworks</button>
+                <button class="filter-btn" data-filter="ongoing">Ongoing Research</button>
+            </div>
+        </div>
+
+        <div class="project-grid" id="projectGrid">
+
+            <div id="noResultsMsg" class="no-results">
+                No projects found matching your search criteria.
+            </div>
+
+            <a href="/projects/cpi-framework.html" class="project-card" data-category="framework">
+                <div class="card-header">
+                    <span class="status-badge status-framework">Theoretical Framework</span>
+                    <span class="role">Lead Developer</span>
+                </div>
+                <h2>Cognitive Preservation Intelligence (CPI) Framework</h2>
+                <p>Developing a robust theoretical model to identify and preserve human cognitive processes during AI-mediated language learning and teaching.</p>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">AI in Ed</span>
+                        <span class="tag">Cognitive Psych</span>
+                    </div>
+                    <span class="read-more">View Case Study &rarr;</span>
+                </div>
+            </a>
+
+            <a href="/projects/tu-level.html" class="project-card" data-category="assessment">
+                <div class="card-header">
+                    <span class="status-badge status-completed">Deployed Project</span>
+                    <span class="role">Project Manager</span>
+                </div>
+                <h2>TU-LEVEL English Proficiency Test Development</h2>
+                <p>Led the structural development and assessment alignment for the university's standardized English proficiency testing program.</p>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">Testing</span>
+                        <span class="tag">Standardization</span>
+                    </div>
+                    <span class="read-more">View Case Study &rarr;</span>
+                </div>
+            </a>
+
+            <a href="/projects/criticality-scale.html" class="project-card" data-category="ongoing assessment">
+                <div class="card-header">
+                    <span class="status-badge status-ongoing">Ongoing Research</span>
+                    <span class="role">Principal Investigator</span>
+                </div>
+                <h2>Self-Assessment Scale for Measuring Criticality in Academic Writing</h2>
+                <p>A collaborative research initiative designing a scalable tool for students to self-evaluate critical thinking markers within their academic writing.</p>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">Academic Writing</span>
+                        <span class="tag">Evaluation</span>
+                    </div>
+                    <span class="read-more">Read Blog &rarr;</span>
+                </div>
+            </a>
+
+            <a href="/projects/peer-dynamic-assessment.html" class="project-card" data-category="ongoing assessment">
+                <div class="card-header">
+                    <span class="status-badge status-ongoing">Ongoing Research</span>
+                    <span class="role">Principal Investigator</span>
+                </div>
+                <h2>Online Peer-Dynamic Assessment on Writing Skills & Hardiness</h2>
+                <p>Investigating the intersection of online peer feedback systems, writing proficiency development, and the cultivation of academic resilience.</p>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">SLA</span>
+                        <span class="tag">Peer Assessment</span>
+                    </div>
+                    <span class="read-more">Read Blog &rarr;</span>
+                </div>
+            </a>
+
+            <a href="/projects/idiodynamic-method.html" class="project-card" data-category="ongoing">
+                <div class="card-header">
+                    <span class="status-badge status-ongoing">Ongoing Research</span>
+                    <span class="role">Principal Investigator</span>
+                </div>
+                <h2>Idiodynamic Method and Oral Presentation</h2>
+                <p>Utilizing the idiodynamic method to track moment-to-moment fluctuations in learner anxiety, boredom, and engagement during oral presentations.</p>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">L2 Psychology</span>
+                        <span class="tag">Speaking Skills</span>
+                    </div>
+                    <span class="read-more">Read Blog &rarr;</span>
+                </div>
+            </a>
+
+            <a href="/projects/emi-success.html" class="project-card" data-category="ongoing">
+                <div class="card-header">
+                    <span class="status-badge status-ongoing">Ongoing Research</span>
+                    <span class="role">Co-Researcher</span>
+                </div>
+                <h2>Teachers' and Students' Construction of Success in EMI</h2>
+                <p>A collaborative project with The Education University of Hong Kong exploring pedagogical success within English-Medium Instruction (EMI) contexts.</p>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">EMI</span>
+                        <span class="tag">Teacher Education</span>
+                    </div>
+                    <span class="read-more">Read Blog &rarr;</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const projectCards = document.querySelectorAll('.project-card');
+            const noResultsMsg = document.getElementById('noResultsMsg');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+
+            let currentCategory = 'all';
+
+            // Function to filter cards based on search text and category
+            function filterProjects() {
+                const searchTerm = searchInput.value.toLowerCase();
+                let visibleCount = 0;
+
+                projectCards.forEach(card => {
+                    const cardContent = card.textContent.toLowerCase();
+                    const cardCategory = card.getAttribute('data-category');
+                    
+                    // Check if it matches search text
+                    const matchesSearch = cardContent.includes(searchTerm);
+                    // Check if it matches selected category filter
+                    const matchesCategory = (currentCategory === 'all') || cardCategory.includes(currentCategory);
+
+                    if (matchesSearch && matchesCategory) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show 'No Results' message if needed
+                if (visibleCount === 0) {
+                    noResultsMsg.style.display = 'block';
+                } else {
+                    noResultsMsg.style.display = 'none';
+                }
+            }
+
+            // Listen for typing in the search box
+            searchInput.addEventListener('input', filterProjects);
+
+            // Listen for clicks on the filter buttons
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active styling
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update category and run filter
+                    currentCategory = this.getAttribute('data-filter');
+                    filterProjects();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
